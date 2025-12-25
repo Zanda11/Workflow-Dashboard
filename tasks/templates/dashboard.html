@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <title>Manager Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container-fluid px-4 py-3">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0">Manager Dashboard</h3>
+        <div>
+            <a href="{% url 'export_excel' %}" class="btn btn-success btn-sm">
+                ⬇ Excel татах
+            </a>
+            <a href="{% url 'my_tasks' %}" class="btn btn-outline-secondary btn-sm">
+                ← Миний ажлууд
+            </a>
+        </div>
+    </div>
+
+    <p class="text-muted">
+        Тайланг Excel хэлбэрээр татаж ашиглах боломжтой.
+    </p>
+
+</div>
+
+</body>
+</html>
