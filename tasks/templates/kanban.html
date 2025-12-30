@@ -1,0 +1,47 @@
+<h1>Kanban Board</h1>
+
+<table border="1" width="100%">
+<tr>
+  <th>TODO</th>
+  <th>DOING</th>
+  <th>DONE</th>
+</tr>
+
+<tr valign="top">
+<td width="33%">
+  {% for task in tasks_todo %}
+    <p>
+      <b>{{ task.title }}</b><br>
+      <a href="{% url 'move_task' task.id 'DOING' %}">➡ Doing</a>
+    </p>
+  {% empty %}
+    <p>Хоосон</p>
+  {% endfor %}
+</td>
+
+<td width="33%">
+  {% for task in tasks_doing %}
+    <p>
+      <b>{{ task.title }}</b><br>
+      <a href="{% url 'move_task' task.id 'DONE' %}">➡ Done</a>
+    </p>
+  {% empty %}
+    <p>Хоосон</p>
+  {% endfor %}
+</td>
+
+<td width="33%">
+  {% for task in tasks_done %}
+    <p>
+      <b>{{ task.title }}</b><br>
+      ✔ Дууссан
+    </p>
+  {% empty %}
+    <p>Хоосон</p>
+  {% endfor %}
+</td>
+</tr>
+</table>
+
+<br>
+<a href="/admin/">Admin</a>
