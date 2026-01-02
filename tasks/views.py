@@ -39,7 +39,15 @@ def dashboard(request):
 
 
 @login_required
-def kanban(request):
-    tasks = Task.objects.all()
-    return render(request, "kanban.html", {"tasks": tasks})
+def kanban_board(request):
+    tasks_todo = Task.objects.filter(status='TODO')
+    tasks_doing = Task.objects.filter(status='DOING')
+    tasks_done = Task.objects.filter(status='DONE')
+
+    return render(request, "tasks/kanban.html", {
+        "tasks_todo": tasks_todo,
+        "tasks_doing": tasks_doing,
+        "tasks_done": tasks_done,
+    })
+
 
