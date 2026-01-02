@@ -52,10 +52,8 @@ def kanban_board(request):
 
 @login_required
 def task_list(request):
-    tasks = Task.objects.all().order_by("-id")
-    return render(request, "tasks/list.html", {
-        "tasks": tasks
-    })
+    tasks = Task.objects.all()
+    return render(request, "tasks/list.html", {"tasks": tasks})
 
 
 

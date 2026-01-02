@@ -31,17 +31,15 @@
 <body>
 
 <header>
-    <a href="/my-tasks/">My Tasks</a>
-    <a href="/kanban/">Kanban</a>
-    <a href="/dashboard/">Dashboard</a>
+    <a href="{% url 'my_tasks' %}">My Tasks</a>
+    <a href="{% url 'kanban' %}">Kanban</a>
+    <a href="{% url 'dashboard' %}">Dashboard</a>
+    <a href="{% url 'task_list' %}">List</a>
     <a href="/admin/logout/">Logout</a>
-    <a href="/tasks/board/">Board</a>
-    <a href="/tasks/list/">List</a>
 </header>
 
 <div class="container">
-    {% block content %}
-    {% endblock %}
+    {% block content %}{% endblock %}
 </div>
 
 </body>

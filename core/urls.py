@@ -6,7 +6,7 @@ def home(request):
     return redirect('my_tasks')
 
 urlpatterns = [
-    path('', home),              # 👈 ЭНЭ ЧУХАЛ
-    path('admin/', admin.site.urls),
-    path('', include('tasks.urls')),
+    path("admin/", admin.site.urls),
+    path("", include("tasks.urls")),
 ]
+
