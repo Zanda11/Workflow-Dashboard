@@ -6,4 +6,5 @@ urlpatterns = [
     path("update-task/<int:task_id>/", views.update_task, name="update_task"),
     path("dashboard/", views.dashboard, name="dashboard"),
     path("kanban/", views.kanban_board, name="kanban"),
+    path("list/", views.task_list, name="task_list"),
 ]

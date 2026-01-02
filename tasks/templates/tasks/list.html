@@ -1,0 +1,35 @@
+{% extends "tasks/base.html" %}
+{% block content %}
+
+<h2>Task List</h2>
+
+<table style="width:100%; border-collapse: collapse;">
+  <thead>
+    <tr style="background:#222; color:white;">
+      <th style="padding:8px;">Title</th>
+      <th>Status</th>
+      <th>Assigned</th>
+      <th>Progress</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for task in tasks %}
+    <tr style="border-bottom:1px solid #ccc;">
+      <td style="padding:8px;">{{ task.title }}</td>
+      <td>{{ task.status }}</td>
+      <td>{{ task.assigned_to }}</td>
+      <td>{{ task.progress }}%</td>
+      <td>
+        <a href="{% url 'update_task' task.id %}">Update</a>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="5">No tasks</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
