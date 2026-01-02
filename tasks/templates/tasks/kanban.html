@@ -4,44 +4,31 @@
 <h2>Kanban Board</h2>
 
 <div class="kanban">
-
     <div class="column">
-        <h3>TODO</h3>
-        {% for task in tasks_todo %}
-            <div class="card">
-                <strong>{{ task.title }}</strong><br>
-                {{ task.description|default:"" }}<br>
-                <a href="{% url 'move_task' task.id 'DOING' %}">➡ Move to Doing</a>
-            </div>
-        {% empty %}
-            <p>Хоосон</p>
+        <h3>To Do</h3>
+        {% for task in tasks %}
+            {% if task.status == "TODO" %}
+                <div class="card">{{ task.title }}</div>
+            {% endif %}
         {% endfor %}
     </div>
 
     <div class="column">
-        <h3>DOING</h3>
-        {% for task in tasks_doing %}
-            <div class="card">
-                <strong>{{ task.title }}</strong><br>
-                {{ task.description|default:"" }}<br>
-                <a href="{% url 'move_task' task.id 'DONE' %}">➡ Move to Done</a>
-            </div>
-        {% empty %}
-            <p>Хоосон</p>
+        <h3>Doing</h3>
+        {% for task in tasks %}
+            {% if task.status == "DOING" %}
+                <div class="card">{{ task.title }}</div>
+            {% endif %}
         {% endfor %}
     </div>
 
     <div class="column">
-        <h3>DONE</h3>
-        {% for task in tasks_done %}
-            <div class="card">
-                <strong>{{ task.title }}</strong><br>
-                ✔ Дууссан
-            </div>
-        {% empty %}
-            <p>Хоосон</p>
+        <h3>Done</h3>
+        {% for task in tasks %}
+            {% if task.status == "DONE" %}
+                <div class="card">{{ task.title }}</div>
+            {% endif %}
         {% endfor %}
     </div>
-
 </div>
 {% endblock %}
