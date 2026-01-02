@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Workflow Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f8;
+        }
+        header {
+            background: #1f2937;
+            color: white;
+            padding: 12px 20px;
+        }
+        header a {
+            color: #93c5fd;
+            margin-right: 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            padding: 20px;
+        }
+        .kanban {
+            display: flex;
+            gap: 20px;
+        }
+        .column {
+            background: #e5e7eb;
+            padding: 10px;
+            width: 33%;
+            border-radius: 6px;
+        }
+        .column h3 {
+            text-align: center;
+        }
+        .card {
+            background: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+        .card a {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="/my-tasks/">My Tasks</a>
+    <a href="/kanban/">Kanban</a>
+    <a href="/dashboard/">Dashboard</a>
+    <a href="/admin/logout/">Logout</a>
+</header>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>

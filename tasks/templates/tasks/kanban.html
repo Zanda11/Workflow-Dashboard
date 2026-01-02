@@ -1,47 +1,47 @@
-<h1>Kanban Board</h1>
+{% extends "tasks/base.html" %}
 
-<table border="1" width="100%">
-<tr>
-  <th>TODO</th>
-  <th>DOING</th>
-  <th>DONE</th>
-</tr>
+{% block content %}
+<h2>Kanban Board</h2>
 
-<tr valign="top">
-<td width="33%">
-  {% for task in tasks_todo %}
-    <p>
-      <b>{{ task.title }}</b><br>
-      <a href="{% url 'move_task' task.id 'DOING' %}">➡ Doing</a>
-    </p>
-  {% empty %}
-    <p>Хоосон</p>
-  {% endfor %}
-</td>
+<div class="kanban">
 
-<td width="33%">
-  {% for task in tasks_doing %}
-    <p>
-      <b>{{ task.title }}</b><br>
-      <a href="{% url 'move_task' task.id 'DONE' %}">➡ Done</a>
-    </p>
-  {% empty %}
-    <p>Хоосон</p>
-  {% endfor %}
-</td>
+    <div class="column">
+        <h3>TODO</h3>
+        {% for task in tasks_todo %}
+            <div class="card">
+                <strong>{{ task.title }}</strong><br>
+                {{ task.description|default:"" }}<br>
+                <a href="{% url 'move_task' task.id 'DOING' %}">➡ Move to Doing</a>
+            </div>
+        {% empty %}
+            <p>Хоосон</p>
+        {% endfor %}
+    </div>
 
-<td width="33%">
-  {% for task in tasks_done %}
-    <p>
-      <b>{{ task.title }}</b><br>
-      ✔ Дууссан
-    </p>
-  {% empty %}
-    <p>Хоосон</p>
-  {% endfor %}
-</td>
-</tr>
-</table>
+    <div class="column">
+        <h3>DOING</h3>
+        {% for task in tasks_doing %}
+            <div class="card">
+                <strong>{{ task.title }}</strong><br>
+                {{ task.description|default:"" }}<br>
+                <a href="{% url 'move_task' task.id 'DONE' %}">➡ Move to Done</a>
+            </div>
+        {% empty %}
+            <p>Хоосон</p>
+        {% endfor %}
+    </div>
 
-<br>
-<a href="/admin/">Admin</a>
+    <div class="column">
+        <h3>DONE</h3>
+        {% for task in tasks_done %}
+            <div class="card">
+                <strong>{{ task.title }}</strong><br>
+                ✔ Дууссан
+            </div>
+        {% empty %}
+            <p>Хоосон</p>
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock %}
