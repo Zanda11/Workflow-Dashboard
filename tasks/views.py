@@ -6,7 +6,7 @@ from .models import Task
 @login_required
 def my_tasks(request):
     tasks = Task.objects.filter(assigned_to=request.user)
-    return render(request, "my_tasks.html", {"tasks": tasks})
+    return render(request, "tasks/my_tasks.html", {"tasks": tasks})
 
 
 @login_required
@@ -19,7 +19,7 @@ def update_task(request, task_id):
         task.save()
         return redirect("my_tasks")
 
-    return render(request, "update_task.html", {"task": task})
+    return render(request, "tasks/update_task.html", {"task": task})
 
 
 @login_required
@@ -31,7 +31,7 @@ def dashboard(request):
     if total > 0:
         progress = int((done / total) * 100)
 
-    return render(request, "dashboard.html", {
+    return render(request, "tasks/dashboard.html", {
         "total": total,
         "done": done,
         "progress": progress,
