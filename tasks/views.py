@@ -36,3 +36,10 @@ def dashboard(request):
         "done": done,
         "progress": progress,
     })
+
+
+@login_required
+def kanban(request):
+    tasks = Task.objects.all()
+    return render(request, "kanban.html", {"tasks": tasks})
+
