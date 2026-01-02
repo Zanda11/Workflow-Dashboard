@@ -3,32 +3,46 @@
 {% block content %}
 <h2>Kanban Board</h2>
 
-<div class="kanban">
-    <div class="column">
-        <h3>To Do</h3>
-        {% for task in tasks %}
-            {% if task.status == "TODO" %}
-                <div class="card">{{ task.title }}</div>
-            {% endif %}
-        {% endfor %}
-    </div>
+<div class="kanban" style="display:flex; gap:20px;">
 
-    <div class="column">
-        <h3>Doing</h3>
-        {% for task in tasks %}
-            {% if task.status == "DOING" %}
-                <div class="card">{{ task.title }}</div>
-            {% endif %}
-        {% endfor %}
-    </div>
+  <!-- TODO -->
+  <div class="column" style="width:33%;">
+    <h3>To Do</h3>
+    {% for task in tasks_todo %}
+      <div class="card">
+        <b>{{ task.title }}</b><br>
+        {{ task.progress }}%
+      </div>
+    {% empty %}
+      <p>Ажил алга</p>
+    {% endfor %}
+  </div>
 
-    <div class="column">
-        <h3>Done</h3>
-        {% for task in tasks %}
-            {% if task.status == "DONE" %}
-                <div class="card">{{ task.title }}</div>
-            {% endif %}
-        {% endfor %}
-    </div>
+  <!-- DOING -->
+  <div class="column" style="width:33%;">
+    <h3>Doing</h3>
+    {% for task in tasks_doing %}
+      <div class="card">
+        <b>{{ task.title }}</b><br>
+        {{ task.progress }}%
+      </div>
+    {% empty %}
+      <p>Ажил алга</p>
+    {% endfor %}
+  </div>
+
+  <!-- DONE -->
+  <div class="column" style="width:33%;">
+    <h3>Done</h3>
+    {% for task in tasks_done %}
+      <div class="card">
+        <b>{{ task.title }}</b><br>
+        {{ task.progress }}%
+      </div>
+    {% empty %}
+      <p>Ажил алга</p>
+    {% endfor %}
+  </div>
+
 </div>
 {% endblock %}
